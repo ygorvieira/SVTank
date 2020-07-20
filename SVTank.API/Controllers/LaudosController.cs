@@ -17,21 +17,21 @@ namespace SVTank.API.Controllers
 
         [HttpGet]
         [Route("GetLaudos/")]
-        public List<Laudo> Get()
+        public List<Laudo> GetLaudos()
         {
             return serviceLaudo.ObterLaudos();
         }
 
         [HttpGet]
-        [Route("GetLaudo/ID/{idLaudo}/", Name = "Get")]
-        public Laudo Get(int idLaudo)
+        [Route("GetLaudo/ID/{idLaudo}/")]
+        public Laudo GetLaudo(int idLaudo)
         {
             return serviceLaudo.ObterLaudo(idLaudo);
         }
 
         [HttpPost]
         [Route("InsertLaudo/")]
-        public void Post(Laudo laudo)
+        public void PostLaudo(Laudo laudo)
         {
             serviceLaudo.InserirLaudo(laudo);
         }

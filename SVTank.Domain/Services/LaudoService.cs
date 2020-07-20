@@ -11,7 +11,7 @@ namespace SVTank.Domain.Services
 {
     public class LaudoService : ILaudoRepository
     {
-        private readonly string connectionString = "";
+        private readonly string connectionString = "Data Source=den1.mssql7.gear.host; Initial Catalog=svtank; User Id=svtank; Password=Sx8H!3Su4At?";
 
         public int AtualizarLaudo(int idLaudo)
         {
@@ -25,8 +25,8 @@ namespace SVTank.Domain.Services
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    var query = "INSERT INTO Laudo VALUES(@DataInspecao, @DataValidade, @ClienteId, @TipoEquipamentoId, @TAG, @AnoFabricacao, @TipoLaudo, @Status)";
-                    connection.Execute(query);
+                    var query = "INSERT INTO Laudo(DataInspecao, DataValidade, ClienteId, TipoEquipamentoId, TAG, AnoFabricacao, TipoLaudo, Status) VALUES(@DataInspecao, @DataValidade, @ClienteId, @TipoEquipamentoId, @TAG, @AnoFabricacao, @TipoLaudo, @Status)";
+                    connection.Execute(query, laudo);
                 }
                 return 1;
             }

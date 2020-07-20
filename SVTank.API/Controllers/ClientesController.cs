@@ -15,21 +15,21 @@ namespace SVTank.API.Controllers
 
         [HttpGet]
         [Route("GetClientes/")]
-        public List<Cliente> Get()
+        public List<Cliente> GetClientes()
         {
             return clienteService.ObterClientes();
         }
 
         [HttpGet]
-        [Route("GetCliente/ID/{idCliente}/", Name ="Get")]
-        public Cliente Get(int idCliente)
+        [Route("GetCliente/ID/{idCliente}/")]
+        public Cliente GetCliente(int idCliente)
         {
             return clienteService.ObterCliente(idCliente);
         }
 
         [HttpPost]
         [Route("InsertCliente/")]
-        public void Post(Cliente cliente)
+        public void PostCliente(Cliente cliente)
         {
             clienteService.InserirCliente(cliente);
         }

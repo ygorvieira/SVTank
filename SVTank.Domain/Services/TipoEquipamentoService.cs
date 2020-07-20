@@ -11,7 +11,7 @@ namespace SVTank.Domain.Services
 {
     public class TipoEquipamentoService : IEquipamentoRepository
     {
-        private readonly string connectionString = "";
+        private readonly string connectionString = "Data Source=den1.mssql7.gear.host; Initial Catalog=svtank; User Id=svtank; Password=Sx8H!3Su4At?";
 
         public int AtualizarTipoEquipamento(int idEquipamento)
         {
@@ -25,8 +25,8 @@ namespace SVTank.Domain.Services
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    var query = "INSERT INTO TipoEquipamento VALUES(@Nome)";
-                    connection.Execute(query);
+                    var query = "INSERT INTO TipoEquipamento(Nome) VALUES(@Nome)";
+                    connection.Execute(query, equipamento);
                 }
 
                 return 1;

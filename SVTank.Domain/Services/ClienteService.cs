@@ -11,7 +11,7 @@ namespace SVTank.Domain.Services
 {
     public class ClienteService : IClienteRepository
     {
-        private readonly string connectionString = "";
+        private readonly string connectionString = "Data Source=den1.mssql7.gear.host; Initial Catalog=svtank; User Id=svtank; Password=Sx8H!3Su4At?";
 
         public int AtualizarCliente(int idCliente)
         {
@@ -25,8 +25,8 @@ namespace SVTank.Domain.Services
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    var query = "INSERT INTO Cliente VALUES(@Nome, @CNPJ, @Logradouro, @NumeroEndereco, @Complemento, @CEP, @Bairro, @Cidade, @UF)";
-                    connection.Execute(query);
+                    var query = "INSERT INTO Cliente(Nome, CNPJ, Logradouro, NumeroEndereco, Complemento, CEP, Bairro, Cidade, UF) VALUES(@Nome, @CNPJ, @Logradouro, @NumeroEndereco, @Complemento, @CEP, @Bairro, @Cidade, @UF)";
+                    connection.Execute(query, cliente);
                 }
 
                 return 1;

@@ -17,21 +17,21 @@ namespace SVTank.API.Controllers
 
         [HttpGet]
         [Route("GetEquipamentos/")]
-        public List<TipoEquipamento> Get()
+        public List<TipoEquipamento> GetEquipamentos()
         {
             return serviceEquipamento.ObterTiposEquipamentos();
         }
 
         [HttpGet]
-        [Route("GetEquipamento/ID/{idEquipamento}/", Name = "Get")]
-        public TipoEquipamento Get(int idEquipamento)
+        [Route("GetEquipamento/ID/{idEquipamento}/")]
+        public TipoEquipamento GetEquipamento(int idEquipamento)
         {
             return serviceEquipamento.ObterTipoEquipamento(idEquipamento);
         }
 
         [HttpPost]
         [Route("InsertEquipamento/")]
-        public void Post(TipoEquipamento equipamento)
+        public void PostEquipamento(TipoEquipamento equipamento)
         {
             serviceEquipamento.InserirEquipamento(equipamento);
         }
