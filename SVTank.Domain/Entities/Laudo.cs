@@ -14,5 +14,6 @@ namespace SVTank.Domain.Entities
         public string TAG { get; set; }
         public int AnoFabricacao { get; set; }
         public TipoLaudoEnum TipoLaudo { get; set; }
+        public bool Status { get; set; }
     }
 }

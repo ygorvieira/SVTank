@@ -1,13 +1,18 @@
-﻿using SVTank.Domain.Entities;
+﻿using Dapper;
+using SVTank.Domain.Entities;
 using SVTank.Domain.Repository;
 
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace SVTank.Domain.Services
 {
     public class TipoEquipamentoService : IEquipamentoRepository
     {
+        private readonly string connectionString = "";
+
         public int AtualizarTipoEquipamento(int idEquipamento)
         {
             throw new NotImplementedException();
@@ -15,17 +20,62 @@ namespace SVTank.Domain.Services
 
         public int InserirEquipamento(TipoEquipamento equipamento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "INSERT INTO TipoEquipamento VALUES(@Nome)";
+                    connection.Execute(query);
+                }
+
+                return 1;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public TipoEquipamento ObterTipoEquipamento(int idEquipamento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "SELECT * FROM TipoEquipamento WHERE IdTipoEquipamento = " + idEquipamento;
+                    var equiapamento = connection.Query<TipoEquipamento>(query).FirstOrDefault();
+
+                    return equiapamento;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<TipoEquipamento> ObterTiposEquipamentos()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "SELECT * FROM TipoEquipamento";
+                    var lstEquipamentos = connection.Query<TipoEquipamento>(query).ToList();
+
+                    return lstEquipamentos;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public int RemoverTipoEquipamento(int idEquipamento)

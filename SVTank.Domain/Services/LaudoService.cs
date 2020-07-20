@@ -1,13 +1,18 @@
-﻿using SVTank.Domain.Entities;
+﻿using Dapper;
+using SVTank.Domain.Entities;
 using SVTank.Domain.Repository;
 
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace SVTank.Domain.Services
 {
     public class LaudoService : ILaudoRepository
     {
+        private readonly string connectionString = "";
+
         public int AtualizarLaudo(int idLaudo)
         {
             throw new NotImplementedException();
@@ -15,7 +20,21 @@ namespace SVTank.Domain.Services
 
         public int InserirLaudo(Laudo laudo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "INSERT INTO Laudo VALUES(@DataInspecao, @DataValidade, @ClienteId, @TipoEquipamentoId, @TAG, @AnoFabricacao, @TipoLaudo, @Status)";
+                    connection.Execute(query);
+                }
+                return 1;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Laudo> ListaLaudosReprovados()
@@ -25,12 +44,42 @@ namespace SVTank.Domain.Services
 
         public Laudo ObterLaudo(int idLaudo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "SELECT * FROM Laudo WHERE IdLaudo = " + idLaudo;
+                    var laudo = connection.Query<Laudo>(query).FirstOrDefault();
+
+                    return laudo;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Laudo> ObterLaudos()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "SELECT * FROM Laudo";
+                    var lstLaudos = connection.Query<Laudo>(query).ToList();
+
+                    return lstLaudos;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Laudo> ObterLaudosVencidos(DateTime dataVencimento)

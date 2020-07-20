@@ -9,10 +9,11 @@
     <PackageReference Include="Dapper" Version="2.0.35" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\SVTank.Domain\SVTank.Domain.csproj" />
   </ItemGroup>
 
 </Project>
