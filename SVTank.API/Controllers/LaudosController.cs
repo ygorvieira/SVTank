@@ -31,7 +31,6 @@ namespace SVTank.API.Controllers
         [Route("GetLaudosVencidos/DataVencimento/{data}/")]
         public List<Laudo> GetLaudosVencidos(string data)
         {
-            //var dataVencimento = Convert.ToDateTime(data);
             return serviceLaudo.ObterLaudosVencidos(data);
         }
 
