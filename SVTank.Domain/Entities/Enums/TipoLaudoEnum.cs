@@ -2,7 +2,7 @@
 {
     public enum TipoLaudoEnum
     {
-        Anual,
-        Trimestral
+        Anual = 0,
+        Trimestral = 1
     }
 }

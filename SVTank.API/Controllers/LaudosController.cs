@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+
 using SVTank.Domain.Entities;
 using SVTank.Domain.Services;
+
+using System.Collections.Generic;
 
 namespace SVTank.API.Controllers
 {
@@ -27,6 +25,14 @@ namespace SVTank.API.Controllers
         public Laudo GetLaudo(int idLaudo)
         {
             return serviceLaudo.ObterLaudo(idLaudo);
+        }
+
+        [HttpGet]
+        [Route("GetLaudosVencidos/DataVencimento/{data}/")]
+        public List<Laudo> GetLaudosVencidos(string data)
+        {
+            //var dataVencimento = Convert.ToDateTime(data);
+            return serviceLaudo.ObterLaudosVencidos(data);
         }
 
         [HttpPost]

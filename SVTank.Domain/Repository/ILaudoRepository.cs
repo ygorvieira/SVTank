@@ -1,6 +1,5 @@
 ﻿using SVTank.Domain.Entities;
 
-using System;
 using System.Collections.Generic;
 
 namespace SVTank.Domain.Repository
@@ -13,7 +12,7 @@ namespace SVTank.Domain.Repository
         int AtualizarLaudo(int idLaudo);
         int RemoverLaudo(int idLaudo);
 
-        List<Laudo> ObterLaudosVencidos(DateTime dataVencimento);
+        List<Laudo> ObterLaudosVencidos(string dataVencimento);
         List<Laudo> ListaLaudosReprovados();
     }
 }

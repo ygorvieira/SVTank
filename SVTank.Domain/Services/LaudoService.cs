@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using SVTank.Domain.Entities;
+using SVTank.Domain.Entities.Enums;
 using SVTank.Domain.Repository;
 
 using System;
@@ -22,6 +23,15 @@ namespace SVTank.Domain.Services
         {
             try
             {
+                if (laudo.TipoLaudo == TipoLaudoEnum.Anual)
+                {
+                    laudo.DataValidade = laudo.DataInspecao.AddYears(1);
+                }
+                else
+                {
+                    laudo.DataValidade = laudo.DataInspecao.AddMonths(3);
+                }
+
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -82,9 +92,24 @@ namespace SVTank.Domain.Services
             }
         }
 
-        public List<Laudo> ObterLaudosVencidos(DateTime dataVencimento)
+        public List<Laudo> ObterLaudosVencidos(string dataVencimento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "SELECT * FROM Laudo WHERE DataValidade <= '" + dataVencimento + "'";
+                    var lstLaudosVencidos = connection.Query<Laudo>(query).ToList();
+
+                    return lstLaudosVencidos;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public int RemoverLaudo(int idLaudo)
