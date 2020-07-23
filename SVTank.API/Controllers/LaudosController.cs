@@ -40,5 +40,12 @@ namespace SVTank.API.Controllers
         {
             serviceLaudo.InserirLaudo(laudo);
         }
+
+        [HttpDelete]
+        [Route("RemoveLaudo/ID/{idLaudo}/")]
+        public void RemoveLaudo(int idLaudo)
+        {
+            serviceLaudo.RemoverLaudo(idLaudo);
+        }
     }
 }

@@ -80,7 +80,22 @@ namespace SVTank.Domain.Services
 
         public int RemoverCliente(int idCliente)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "DELETE FROM Cliente WHERE idCliente = " + idCliente;
+                    connection.Execute(query, idCliente);
+                }
+
+                return 1;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

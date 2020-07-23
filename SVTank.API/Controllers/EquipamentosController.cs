@@ -33,5 +33,12 @@ namespace SVTank.API.Controllers
         {
             serviceEquipamento.InserirEquipamento(equipamento);
         }
+
+        [HttpDelete]
+        [Route("RemoveEquipamento/ID/{idEquipamento}/")]
+        public void RemoveEquiapamento(int idEquipamento)
+        {
+            serviceEquipamento.RemoverTipoEquipamento(idEquipamento);
+        }
     }
 }

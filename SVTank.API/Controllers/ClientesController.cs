@@ -33,5 +33,12 @@ namespace SVTank.API.Controllers
         {
             clienteService.InserirCliente(cliente);
         }
+
+        [HttpDelete]
+        [Route("RemoveCliente/ID/{idCliente}/")]
+        public void RemoveCliente(int idCliente)
+        {
+            clienteService.RemoverCliente(idCliente);
+        }
     }
 }

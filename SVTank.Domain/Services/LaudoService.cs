@@ -114,7 +114,22 @@ namespace SVTank.Domain.Services
 
         public int RemoverLaudo(int idLaudo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var query = "DELETE FROM Laudo WHERE idLaudo = " + idLaudo;
+                    connection.Execute(query, idLaudo);
+                }
+
+                return 1;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

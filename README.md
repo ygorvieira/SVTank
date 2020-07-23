@@ -22,7 +22,7 @@ Visual Studio 2017
 
 **PUT:**  http://localhost:{nº da porta}/api/clientes
 
-**DELETE:** http://localhost:{nº da porta}/api/clientes
+**DELETE:** http://localhost:{nº da porta}/api/clientes/RemoveCliente/ID/{idCliente}/
 
 **Tipos de Equipamentos**
 
@@ -34,7 +34,7 @@ Visual Studio 2017
 
 **PUT:**  http://localhost:{nº da porta}/api/equipamentos/
 
-**DELETE:** http://localhost:{nº da porta}/api/equipamentos/
+**DELETE:** http://localhost:{nº da porta}/api/equipamentos/RemoveEquipamento/ID/{idEquipamento}/
 
 **Laudos**
 
@@ -48,4 +48,4 @@ Visual Studio 2017
 
 **PUT:**  http://localhost:{nº da porta}/api/laudos/
 
-**DELETE:** http://localhost:{nº da porta}/api/laudos/
+**DELETE:** http://localhost:{nº da porta}/api/laudos/RemoveLaudo/ID/{idLaudo}/
